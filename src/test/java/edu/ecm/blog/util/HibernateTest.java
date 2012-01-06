@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.ecm.blog.domain.Author;
+import edu.ecm.blog.domain.Author;
 import edu.ecm.blog.domain.Post;
 
 public class HibernateTest {

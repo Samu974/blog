@@ -7,6 +7,8 @@
    http://www.springframework.org/schema/tx
    classpath:org/springframework/transaction/config/spring-tx-3.0.xsd">
 
+
+
 	<!-- factory bean pour la SessionFactory hibernate -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

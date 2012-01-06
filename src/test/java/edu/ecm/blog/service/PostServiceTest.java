@@ -110,6 +110,17 @@ public class PostServiceTest {
 		Assert.assertEquals(2, postService.count());
 	}
 
+	@Test
+	public void findBySlug() {
+
+		Post post = new Post();
+		post.setTitle("TiTrE");
+		post.setSlug("coucou");
+		postService.save(post);
+
+		Assert.assertEquals(post, postService.findBySlug("coucou"));
+	}
+
 	@After
 	public void cleanDb() {
 		Session session = sessionFactory.openSession();

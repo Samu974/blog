@@ -7,18 +7,16 @@ import javax.inject.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.ecm.blog.domain.Post;
 
+@Service
 public class PostServiceImpl implements PostService {
 
 	@Inject
 	private SessionFactory sessionFactory;
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -75,4 +73,22 @@ public class PostServiceImpl implements PostService {
 				.uniqueResult();
 		return a.intValue();
 	}
+
+	@Override
+	@Transactional
+	public Post findBySlug(String slug) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Post) session.createQuery("from Post where slug =:slug")
+				.setString("slug", slug).uniqueResult();
+		
+	}
+	
+	@Override
+	@Transactional
+	public Post findById(Long id){
+		Session session = sessionFactory.getCurrentSession();
+		return (Post) session.createQuery("from Post where id =:id")
+				.setLong("id", id).uniqueResult();
+	}
+	
 }
