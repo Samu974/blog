@@ -120,6 +120,7 @@ public class PostServiceTest {
 
 		Assert.assertEquals(post, postService.findBySlug("coucou"));
 	}
+	
 
 	@After
 	public void cleanDb() {

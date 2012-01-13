@@ -22,7 +22,6 @@ public class BlogController {
 	@PostConstruct
 	public void bootstrap() {
 		if (postService.count()==0){
-			for (int i=0; i<3; i++){
 				Post post1 = new Post();
 				post1.setDate(new Date());
 				post1.setTitle("Zee End");
@@ -37,7 +36,7 @@ public class BlogController {
 				post3.setDate(new Date());
 				post3.setTitle("Start");
 				postService.save(post3);
-			}
+
 		}
 	}
 	

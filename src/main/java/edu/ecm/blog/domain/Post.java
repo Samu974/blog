@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "post")
 public class Post {
@@ -27,6 +29,7 @@ public class Post {
 	}
 
 	@Column
+	@NotEmpty
 	private String title;
 
 	@Column

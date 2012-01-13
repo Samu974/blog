@@ -2,8 +2,8 @@
 body {
     width: 900px;
     margin: auto;
-    background-color: #858FB3;
-    font: 14px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+    background-image:url(gr.jpg);
+    font: 14px "Comic Sans MS","old book", Sylfaen, "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 
 p {
@@ -12,7 +12,7 @@ p {
 
 a {
     text-decoration: none;
-    color: #274787;
+    color: #3060AA;
 }
 
 #header {
@@ -25,10 +25,10 @@ a {
     border-bottom-right-radius: 0px 0px;
     border-top-left-radius: 20px 20px;
     border-top-right-radius: 0px 0px;
-    border: 1px #284B7E solid;
+    border: 1px #3060AA solid;
     font-size: 16px;
-    background-color: white;
-    box-shadow: 5px 5px #444;
+    box-shadow: 5px 5px #3060AA;
+    text-align:center;
 }
 
 #header .title {
@@ -46,13 +46,14 @@ a {
     border-bottom-left-radius: 20px 20px;
     border-bottom-right-radius: 20px 20px;
     border: 1px #284B7E solid;
-    background-color: white;
-    box-shadow: 5px 5px #444;
+    box-shadow: 5px 5px #3060AA;
+    color : black;
 }
 
 .post {
     margin-bottom:20px;
     border-bottom: 1px #C2C2C2 solid;
+    
     padding-bottom: 10px;
 }
 
@@ -88,10 +89,11 @@ a {
     border-top-left-radius: 0px 0px;
     border-top-right-radius: 0px 0px;
     border: 1px #284B7E solid;
-    background-color: white;
+    color: white;
     margin-bottom: 10px;
     padding: 5px;
     box-shadow: 5px 5px #444;
+    background-image:url(r.jpg);
 }
 
 .tagcloud ul li {
@@ -104,9 +106,10 @@ a {
     border-top-left-radius: 0px 0px;
     border-top-right-radius: 0px 0px;
     border: 1px #284B7E solid;
-    background-color: white;
+    color: white;
     padding: 5px;
-    box-shadow: 5px 5px #444;
+    box-shadow: 5px 5px #3060AA;
+    background-image:url(r.jpg);
 }
 
 #form {
@@ -119,5 +122,5 @@ a {
     border-top-right-radius: 0px 0px;
     border: 1px #284B7E solid;
     background-color: white;
-    box-shadow: 5px 5px #444;
+    box-shadow: 5px 5px #3060AA;
 }

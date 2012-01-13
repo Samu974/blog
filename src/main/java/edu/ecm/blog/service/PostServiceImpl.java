@@ -5,8 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +29,7 @@ public class PostServiceImpl implements PostService {
 	@Transactional
 	public void save(Post post) {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(post);
+		session.saveOrUpdate(post);
 	}
 
 	/*
@@ -49,12 +51,13 @@ public class PostServiceImpl implements PostService {
 	 * @see edu.ecm.blog.service.PostService#find(int, int)
 	 */
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public List find(int pageIndex, int pageSize) {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Post.class);
 		criteria.setFirstResult(pageIndex * pageSize);
 		criteria.setMaxResults(pageSize);
+		criteria.addOrder(Order.desc("date"));
 		List crit = criteria.list();
 		return crit;
 
@@ -66,7 +69,7 @@ public class PostServiceImpl implements PostService {
 	 * @see edu.ecm.blog.service.PostService#count()
 	 */
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public int count() {
 		Session session = sessionFactory.getCurrentSession();
 		Long a = (Long) session.createQuery("Select count(*) from Post")
@@ -78,13 +81,15 @@ public class PostServiceImpl implements PostService {
 	@Transactional
 	public Post findBySlug(String slug) {
 		Session session = sessionFactory.getCurrentSession();
-		return (Post) session.createQuery("from Post where slug =:slug")
-				.setString("slug", slug).uniqueResult();
-		
+		Query query = session
+				.createQuery("from Post where slug=:slug");
+		query.setString("slug", slug);
+		Post i = (Post) query.uniqueResult();
+		return i;
 	}
-	
+		
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public Post findById(Long id){
 		Session session = sessionFactory.getCurrentSession();
 		return (Post) session.createQuery("from Post where id =:id")

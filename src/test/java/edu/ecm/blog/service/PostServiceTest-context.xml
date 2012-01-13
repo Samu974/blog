@@ -8,10 +8,19 @@
    classpath:org/springframework/transaction/config/spring-tx-3.0.xsd">
 
 
+	<!-- pool de connexion -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="url" value="jdbc:derby:target/testdb;create=true" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+	</bean>
 
 	<!-- factory bean pour la SessionFactory hibernate -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties">
 			<bean
 				class="org.springframework.beans.factory.config.PropertiesFactoryBean">

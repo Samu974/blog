@@ -14,6 +14,7 @@
 
            <div id="form">
                <form:form commandName="post" action="/admin/post" method="post">
+                                  <form:hidden path="id" />
                    <p>
                        date
                        <form:errors path="date" />
